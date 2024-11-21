@@ -1,0 +1,57 @@
+---
+whiskers:
+  version: "2.2.0"
+  matrix:
+    - variant: ["regular", "transparent"]
+    - flavor: [frappe, macchiato, mocha]
+    - accent
+  filename: 'themes/catppuccin-{{ flavor.identifier }}-{{ accent }}.json'
+  hex_format: "#{{r}}{{g}}{{b}}{{z}}"
+---
+
+{%- macro theme(palette) -%}
+{%- set accent = palette[accent] -%}
+      "primary": "{{ accent.hex }}",
+      "onPrimary": "{{ palette.base.hex }}",
+      "primaryContainer": "{{ accent.hex }}",
+      "onPrimaryContainer": "{{ palette.base.hex }}",
+      "secondary": "{{ accent.hex }}",
+      "onSecondary": "{{ palette.base.hex }}",
+      "secondaryContainer": "{{ accent.hex }}",
+      "onSecondaryContainer": "{{ palette.base.hex }}",
+      "error": "{{ palette.red.hex }}",
+      "onError": "{{ palette.base.hex }}",
+      "errorContainer": "{{ palette.red.hex }}",
+      "onErrorContainer": "{{ palette.base.hex }}",
+      "surface": "{{ palette.mantle.hex }}",
+      "onSurface": "{{ palette.text.hex }}",
+      "surfaceVariant": "{{ palette.surface2.hex }}",
+      "onSurfaceVariant": "{{ palette.subtext1.hex }}",
+      "outline": "{{ palette.overlay2.hex }}",
+      "outlineVariant": "{{ palette.overlay1.hex }}",
+      "tertiary": "{{ accent.hex }}",
+      "onTertiary": "{{ palette.base.hex }}",
+      "tertiaryContainer": "{{ accent.hex }}",
+      "onTertiaryContainer": "{{ palette.base.hex }}",
+      "surfaceContainerLowest": "{{ palette.crust.hex }}",
+      "surfaceContainerLow": "{{ palette.base.hex }}",
+      "surfaceContainer": "{{ palette.base.hex }}",
+      "surfaceContainerHigh": "{{ palette.base.hex }}",
+      "surfaceContainerHighest": "{{ palette.surface0.hex }}"
+{%- endmacro -%}
+
+{%- set colors = flavor.colors -%}
+{%- set accent = flavor.colors[accent] -%}
+
+{
+  "name": "Catppuccin {{ flavor.name }} {{ accent.name }}",
+  "id": "catppuccin-{{ flavor.identifier }}-{{ accent.identifier }}",
+  "schemes": {
+    "dark": {
+      {{ self::theme(palette=flavor.colors) }}
+    },
+    "light": {
+      {{ self::theme(palette=flavors.latte.colors) }}
+    }
+  }
+}
