@@ -40,7 +40,6 @@ whiskers:
       "surfaceContainerHighest": "{{ palette.surface0.hex }}"
 {%- endmacro -%}
 
-{%- set colors = flavor.colors -%}
 {%- set accent = flavor.colors[accent] -%}
 
 {
