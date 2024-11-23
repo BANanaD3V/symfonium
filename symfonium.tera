@@ -2,7 +2,6 @@
 whiskers:
   version: "2.2.0"
   matrix:
-    - variant: ["regular", "transparent"]
     - flavor: [frappe, macchiato, mocha]
     - accent
   filename: 'themes/catppuccin-{{ flavor.identifier }}-{{ accent }}.json'
